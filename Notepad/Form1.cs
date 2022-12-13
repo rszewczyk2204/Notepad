@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Notepad
 {
@@ -184,6 +184,14 @@ namespace Notepad
             {
                 Process.GetCurrentProcess().Kill();
             }
+        }
+
+        private void TimeDateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var time = DateTime.Now;
+            var selectionIndex = textBox1.SelectionStart;
+            textBox1.Text = textBox1.Text.Insert(selectionIndex, time.ToString());
+            textBox1.SelectionStart = selectionIndex + time.ToString().Length;
         }
     }
 }
