@@ -193,5 +193,10 @@ namespace Notepad
             textBox1.Text = textBox1.Text.Insert(selectionIndex, time.ToString());
             textBox1.SelectionStart = selectionIndex + time.ToString().Length;
         }
+
+        private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.SelectAll();
+        }
     }
 }
