@@ -198,5 +198,23 @@ namespace Notepad
         {
             textBox1.SelectAll();
         }
+
+        private void FindToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fontDialog = new FontDialog();
+
+            switch (fontDialog.ShowDialog())
+            {
+                case DialogResult.OK:
+                    this.textBox1.Font = fontDialog.Font;
+                    break;
+                default: break;
+            }
+        }
     }
 }
