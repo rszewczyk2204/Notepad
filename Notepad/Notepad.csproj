@@ -85,12 +85,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Model\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Functional\Functions.cs" />
     <Compile Include="Presenter\Implementation\ConfigurationPresenter.cs" />
     <Compile Include="Presenter\Interface\IConfigurationPresenter.cs" />
@@ -105,9 +99,6 @@
     <Compile Include="View\Interface\INotepadEdit.cs" />
     <Compile Include="View\Interface\INotepadFile.cs" />
     <Compile Include="View\Interface\INotepadView.cs" />
-    <EmbeddedResource Include="Model\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -150,6 +141,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
