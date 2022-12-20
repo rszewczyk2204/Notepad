@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Notepad
@@ -16,7 +13,7 @@ namespace Notepad
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Notepad());
+            Application.Run(new View.Implentation.Notepad());
         }
     }
 }
