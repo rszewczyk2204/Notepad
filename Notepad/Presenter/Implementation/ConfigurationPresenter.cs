@@ -3,11 +3,12 @@ using System.IO;
 using System.Text;
 using System.Diagnostics;
 using System.Windows.Forms;
-using Notepad.View.Interface;
 using System.Drawing.Printing;
 using Notepad.Presenter.Interface;
+using Notepad.Model.DialogBox;
 
 using static Notepad.Functional.Functions;
+using Notepad.View.Notepad.Interface.Events;
 
 namespace Notepad.Presenter.Implementation
 {
@@ -18,23 +19,24 @@ namespace Notepad.Presenter.Implementation
         public bool IsContentNotLoaded { get; set; } = true;
         public bool IsNewlyCreated { get; set; } = true;
 
-        private readonly INotepadView configurationView;
+        private readonly INotepad notepad;
 
-        public ConfigurationPresenter(INotepadView configurationView)
+        public ConfigurationPresenter(INotepad notepad)
         {
-            this.configurationView = configurationView;
-            this.configurationView.NewFormButtonClickedEvent += NewFormButtonClicked;
-            this.configurationView.TextBoxTextChangedEvent += TextBoxTextChanged;
-            this.configurationView.NewWindowButtonClickedEvent += NewWindowButtonClicked;
-            this.configurationView.OpenFileButtonClickedEvent += OpenFileButtonClicked;
-            this.configurationView.SaveButtonClickedEvent += SaveButtonClicked;
-            this.configurationView.SaveAsButtonClickedEvent += SaveAsButtonClicked;
-            this.configurationView.PageSetupButtonClickedEvent += PageSetupButtonClicked;
-            this.configurationView.PrintButtonClickedEvent += PrintButtonClicked;
-            this.configurationView.ExitButtonClickedEvent += ExitButtonClicked;
+            this.notepad = notepad;
+            this.notepad.NewFormButtonClickedEvent += NewFormButtonClicked;
+            this.notepad.TextBoxTextChangedEvent += TextBoxTextChanged;
+            this.notepad.NewWindowButtonClickedEvent += NewWindowButtonClicked;
+            this.notepad.OpenFileButtonClickedEvent += OpenFileButtonClicked;
+            this.notepad.SaveButtonClickedEvent += SaveButtonClicked;
+            this.notepad.SaveAsButtonClickedEvent += SaveAsButtonClicked;
+            this.notepad.PageSetupButtonClickedEvent += PageSetupButtonClicked;
+            this.notepad.PrintButtonClickedEvent += PrintButtonClicked;
+            this.notepad.ExitButtonClickedEvent += ExitButtonClicked;
 
-            this.configurationView.TimeDateButtonClickedEvent += TimeDateButtonClicked;
-            this.configurationView.FontButtonClickedEvent += FontButtonClicked;
+            this.notepad.FindButtonClickedEvent += FindButtonClicked;
+            this.notepad.TimeDateButtonClickedEvent += TimeDateButtonClicked;
+            this.notepad.FontButtonClickedEvent += FontButtonClicked;
         }
 
         public void NewFormButtonClicked(object sender, EventArgs eventArgs)
@@ -48,43 +50,43 @@ namespace Notepad.Presenter.Implementation
 
             if (IsTitleUpdated)
             {
-                var result = MessageBox.Show("Do you want to save changes to " + configurationView.TitleBarText.Substring(1).Split('-')[0], "Notepad", MessageBoxButtons.YesNoCancel);
+                var result = MessageBox.Show("Do you want to save changes to " + notepad.TitleBarText.Substring(1).Split('-')[0], "Notepad", MessageBoxButtons.YesNoCancel);
 
                 if (result == DialogResult.Yes)
                 {
                     var res = saveFileDialog.ShowDialog();
                     if (res == DialogResult.OK)
                     {
-                        File.WriteAllText(saveFileDialog.FileName, configurationView.InputText);
-                        configurationView.TitleBarText = saveFileDialog.FileName + " - Notepad";
+                        File.WriteAllText(saveFileDialog.FileName, notepad.InputText);
+                        notepad.TitleBarText = saveFileDialog.FileName + " - Notepad";
                     }
                 }
             }
             else
             {
-                configurationView.TitleBarText = "Untitled - Notepad";
-                configurationView.DefaultText = String.Empty;
-                configurationView.InputText = String.Empty;
+                notepad.TitleBarText = "Untitled - Notepad";
+                notepad.DefaultText = String.Empty;
+                notepad.InputText = String.Empty;
                 IsNewlyCreated = true;
             }
         }
 
         public void TextBoxTextChanged(object sender, EventArgs eventArgs)
         {
-            var TextBoxText = configurationView.InputText;
-            var DefaultText = configurationView.DefaultText;
-            var TitleBarText = configurationView.TitleBarText;
+            var TextBoxText = notepad.InputText;
+            var DefaultText = notepad.DefaultText;
+            var TitleBarText = notepad.TitleBarText;
 
             if ((TextBoxText != DefaultText) && !IsTitleUpdated)
             {
-                configurationView.TitleBarText = "*" + TitleBarText;
+                notepad.TitleBarText = "*" + TitleBarText;
                 IsTitleUpdated = true;
             }
 
             if (TextBoxText == DefaultText && TitleBarText.StartsWith("*"))
             {
                 IsTitleUpdated = false;
-                configurationView.TitleBarText = TitleBarText.Substring(1);
+                notepad.TitleBarText = TitleBarText.Substring(1);
             }
         }
 
@@ -105,13 +107,13 @@ namespace Notepad.Presenter.Implementation
 
             if (result == DialogResult.OK)
             {
-                configurationView.InputText = Encoding.UTF8.GetString(File.ReadAllBytes(openFileDialog.FileName));
-                configurationView.DefaultText = configurationView.InputText;
-                configurationView.TitleBarText = GetNameFromAbsolutePath(openFileDialog.FileName) + " - Notepad";
+                notepad.InputText = Encoding.UTF8.GetString(File.ReadAllBytes(openFileDialog.FileName));
+                notepad.DefaultText = notepad.InputText;
+                notepad.TitleBarText = GetNameFromAbsolutePath(openFileDialog.FileName) + " - Notepad";
                 IsTitleUpdated = false;
                 IsNewlyCreated = false;
-                configurationView.TextBoxSelectionLength = 0;
-                configurationView.TextBoxSelectionStart = configurationView.InputText.Length;
+                notepad.TextBoxSelectionLength = 0;
+                notepad.TextBoxSelectionStart = notepad.InputText.Length;
                 AbsoluteFilePath = openFileDialog.FileName;
             }
         }
@@ -130,15 +132,15 @@ namespace Notepad.Presenter.Implementation
                 var res = saveFileDialog.ShowDialog();
                 if (res == DialogResult.OK)
                 {
-                    File.WriteAllText(saveFileDialog.FileName, configurationView.InputText);
-                    configurationView.TitleBarText = saveFileDialog.FileName + " - Notepad";
+                    File.WriteAllText(saveFileDialog.FileName, notepad.InputText);
+                    notepad.TitleBarText = saveFileDialog.FileName + " - Notepad";
                     IsNewlyCreated = false;
                 }
             }
             else
             {
-                File.WriteAllText(AbsoluteFilePath, configurationView.InputText);
-                configurationView.TitleBarText = configurationView.TitleBarText.Substring(1);
+                File.WriteAllText(AbsoluteFilePath, notepad.InputText);
+                notepad.TitleBarText = notepad.TitleBarText.Substring(1);
             }
         }
 
@@ -154,8 +156,8 @@ namespace Notepad.Presenter.Implementation
             var res = saveFileDialog.ShowDialog();
             if (res == DialogResult.OK)
             {
-                File.WriteAllText(saveFileDialog.FileName, configurationView.InputText);
-                configurationView.TitleBarText = saveFileDialog.FileName + " - Notepad";
+                File.WriteAllText(saveFileDialog.FileName, notepad.InputText);
+                notepad.TitleBarText = saveFileDialog.FileName + " - Notepad";
             }
         }
 
@@ -177,6 +179,12 @@ namespace Notepad.Presenter.Implementation
             printDialog.ShowDialog();
         }
 
+        public void FindButtonClicked(object sender, EventArgs eventArgs)
+        {
+            FindDialogBox findDialogBox = new FindDialogBox();
+            findDialogBox.ShowDialog();
+        }
+
         /// <summary>
         /// Right now it forcefully closes the whole app without saving any content to a new file or a file the content was loaded from
         /// </summary>
@@ -191,9 +199,9 @@ namespace Notepad.Presenter.Implementation
         {
             DateTime date = DateTime.Now;
 
-            var selectionStart = configurationView.TextBoxSelectionStart;
-            configurationView.InputText = configurationView.InputText.Insert(selectionStart, date.ToString());
-            configurationView.TextBoxSelectionStart = selectionStart + date.ToString().Length;
+            var selectionStart = notepad.TextBoxSelectionStart;
+            notepad.InputText = notepad.InputText.Insert(selectionStart, date.ToString());
+            notepad.TextBoxSelectionStart = selectionStart + date.ToString().Length;
         }
 
         public void FontButtonClicked(object sender, EventArgs eventArgs) 
@@ -204,10 +212,15 @@ namespace Notepad.Presenter.Implementation
 
             if (result == DialogResult.OK) 
             {
-                configurationView.Font = fontDialog.Font;
+                notepad.Font = fontDialog.Font;
             }
         }
 
-
+        public void ButtonHoveredOver(object sender, EventArgs eventArgs)
+        {
+            //ToolStripMenuItem toolStripMenuItem = sender as ToolStripMenuItem;
+            //toolStripMenuItem.BackColor = Color.Gray;
+            //toolStripMenuItem.ForeColor = Color.Black;
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace Notepad
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new View.Implentation.Notepad());
+            Application.Run(new View.Notepad.Implentation.Notepad());
         }
     }
 }

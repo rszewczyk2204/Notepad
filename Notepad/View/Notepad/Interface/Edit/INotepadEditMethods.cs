@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Notepad.View.Interface
+namespace Notepad.View.Notepad.Interface.Edit
 {
     public interface INotepadEdit
     {
+        void FindButtonClicked(object sender, EventArgs e);
+
         void TimeDateButtonClicked(object sender, EventArgs e);
 
         void FontButtonClicked(object sender, EventArgs e);

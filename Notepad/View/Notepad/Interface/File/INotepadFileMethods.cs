@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Notepad.View.Interface
+namespace Notepad.View.Notepad.Interface.File
 {
-    public interface INotepadFile
+    public partial interface INotepadFile
     {
         void NewFormButtonClicked(object sender, EventArgs eventArgs);
 

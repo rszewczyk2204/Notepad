@@ -1,28 +1,25 @@
 ﻿using Notepad.Presenter.Implementation;
 using Notepad.Presenter.Interface;
-using Notepad.View.Interface;
+using Notepad.View.Notepad.Interface.Edit;
+using Notepad.View.Notepad.Interface.Events;
+using Notepad.View.Notepad.Interface.View;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using static Notepad.Functional.Utility;
 
-namespace Notepad.View.Implentation
+namespace Notepad.View.Notepad.Implentation
 {
-    public partial class Notepad : Form, INotepadView, INotepadFile, INotepadEdit
+    public partial class Notepad : Form, INotepad, INotepadView, INotepadEdit
     {
         public string DefaultText { get; set; }
 
-        public event EventHandler NewFormButtonClickedEvent;
-        public event EventHandler TextBoxTextChangedEvent;
-        public event EventHandler NewWindowButtonClickedEvent;
-        public event EventHandler OpenFileButtonClickedEvent;
-        public event EventHandler SaveButtonClickedEvent;
-        public event EventHandler SaveAsButtonClickedEvent;
-        public event EventHandler PageSetupButtonClickedEvent;
-        public event EventHandler PrintButtonClickedEvent;
-        public event EventHandler ExitButtonClickedEvent;
+        public event EventHandler FindButtonClickedEvent;
 
         public event EventHandler TimeDateButtonClickedEvent;
         public event EventHandler FontButtonClickedEvent;
+
+        public event EventHandler ButtonHoveredOverEvent;
 
         private readonly IConfigurationPresenter configurationPresenter;
 
@@ -34,51 +31,12 @@ namespace Notepad.View.Implentation
             textBox1.Focus();
             textBox2.Text = "Ln 1, Col 1";
             DefaultText = textBox1.Text;
+            menuStrip1.Renderer = new MyRenderer();
         }
 
-        public void TextBoxTextChanged(object sender, EventArgs e)
+        public void FindButtonClicked(object sender, EventArgs eventArgs)
         {
-            TextBoxTextChangedEvent.Invoke(this, e);
-        }
-
-        public void NewFormButtonClicked(object sender, EventArgs eventArgs)
-        {
-            NewFormButtonClickedEvent.Invoke(this, eventArgs);
-        }
-
-        public void NewWindowButtonClicked(object sender, EventArgs eventArgs)
-        {
-            NewWindowButtonClickedEvent.Invoke(this, eventArgs);
-        }
-
-        public void OpenFileButtonClicked(object sender, EventArgs eventArgs)
-        {
-            OpenFileButtonClickedEvent.Invoke(this, eventArgs);
-        }
-
-        public void SaveButtonClicked(object sender, EventArgs eventArgs)
-        {
-            SaveButtonClickedEvent.Invoke(this, eventArgs);
-        }
-
-        public void SaveAsButtonClicked(object sender, EventArgs eventArgs)
-        {
-            SaveAsButtonClickedEvent.Invoke(this, eventArgs);
-        }
-
-        public void PageSetupButtonClicked(object sender, EventArgs eventArgs)
-        {
-            PageSetupButtonClickedEvent.Invoke(this, eventArgs);
-        }
-
-        public void PrintButtonClicked(object sender, EventArgs eventArgs)
-        {
-            PrintButtonClickedEvent.Invoke(this, eventArgs);
-        }
-
-        public void ExitButtonClicked(object sender, EventArgs eventArgs)
-        {
-            ExitButtonClickedEvent.Invoke(this, eventArgs);
+            FindButtonClickedEvent.Invoke(this, eventArgs);
         }
 
         public void TimeDateButtonClicked(object sender, EventArgs eventArgs)
@@ -89,6 +47,12 @@ namespace Notepad.View.Implentation
         public void FontButtonClicked(object sender, EventArgs eventArgs)
         {
             FontButtonClickedEvent.Invoke(this, eventArgs);
+        }
+
+        protected override void OnActivated(EventArgs e)
+        {
+            UseImmersiveDarkMode(this.Handle, true);
+            base.OnActivated(e);
         }
 
         public string InputText
@@ -140,7 +104,7 @@ namespace Notepad.View.Implentation
             }
         }
 
-        public Font Font
+        public new Font Font
         {
             get
             {
@@ -150,6 +114,34 @@ namespace Notepad.View.Implentation
             {
                 textBox1.Font = value;
             }
+        }
+
+        private class MyRenderer : ToolStripProfessionalRenderer
+        {
+            public MyRenderer() : base(new MyColors()) { }
+        }
+
+        private class MyColors : ProfessionalColorTable
+        {
+            public override Color MenuItemSelected
+            {
+                get { return Color.Gray; }
+            }
+            public override Color MenuItemSelectedGradientBegin
+            {
+                get { return Color.Gray; }
+            }
+            public override Color MenuItemSelectedGradientEnd
+            {
+                get { return Color.Gray; }
+            }
+            public override Color MenuItemBorder
+            {
+                get { return Color.Empty; }
+            }
+            public override Color MenuItemPressedGradientBegin => Color.Gray;
+            public override Color MenuItemPressedGradientEnd => Color.Gray;
+            public override Color MenuItemPressedGradientMiddle => Color.Gray;
         }
     }
 }

@@ -1,17 +1,10 @@
-﻿using System;
-using System.Drawing;
+﻿using Notepad.View.Interface;
+using System;
 
-namespace Notepad.View.Interface
+namespace Notepad.View.Notepad.Interface.Events
 {
-    public interface INotepadView
+    public partial interface INotepad : INotepadValues
     {
-        string InputText { get; set; }
-        string TitleBarText { get; set; }
-        int TextBoxSelectionStart { get; set; }
-        int TextBoxSelectionLength { get; set; }
-        string DefaultText { get; set; }
-        Font Font { get; set; }
-
         event EventHandler NewFormButtonClickedEvent;
         event EventHandler TextBoxTextChangedEvent;
         event EventHandler NewWindowButtonClickedEvent;
@@ -21,8 +14,5 @@ namespace Notepad.View.Interface
         event EventHandler PageSetupButtonClickedEvent;
         event EventHandler PrintButtonClickedEvent;
         event EventHandler ExitButtonClickedEvent;
-
-        event EventHandler TimeDateButtonClickedEvent;
-        event EventHandler FontButtonClickedEvent;
     }
 }

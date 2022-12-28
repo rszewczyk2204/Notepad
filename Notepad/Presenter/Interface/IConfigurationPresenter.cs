@@ -22,8 +22,12 @@ namespace Notepad.Presenter.Interface
 
         void ExitButtonClicked(object sender, EventArgs eventArgs);
 
+        void FindButtonClicked(object sender, EventArgs eventArgs);
+
         void TimeDateButtonClicked(object sender, EventArgs eventArgs);
 
         void FontButtonClicked(object sender, EventArgs eventArgs);
+
+        void ButtonHoveredOver(object sender, EventArgs eventArgs);
     }
 }
