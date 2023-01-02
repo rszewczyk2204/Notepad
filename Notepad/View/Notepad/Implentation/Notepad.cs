@@ -29,6 +29,7 @@ namespace Notepad.View.Notepad.Implentation
             DefaultText = textBox1.Text;
             menuStrip1.Renderer = new MyRenderer();
             IsUndoButtonEnabled = false;
+            IsPasteButtonEnabled = Clipboard.ContainsText();
         }
 
         protected override void OnActivated(EventArgs e)
@@ -151,6 +152,11 @@ namespace Notepad.View.Notepad.Implentation
         public bool IsDeleteButtonEnabled
         {
             set => deleteToolStripMenuItem.Enabled = value;
+        }
+
+        private bool IsPasteButtonEnabled
+        {
+            set => pasteToolStripMenuItem.Enabled = value;
         }
     }
 }

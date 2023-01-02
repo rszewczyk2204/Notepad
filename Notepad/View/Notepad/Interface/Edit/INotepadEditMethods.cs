@@ -8,6 +8,10 @@ namespace Notepad.View.Notepad.Interface.Edit
 
         void CutButtonClicked(object sender, EventArgs e);
 
+        void CopyButtonClicked(object sender, EventArgs e);
+
+        void PasteButtonClicked(object sender, EventArgs e);
+
         void DeleteButtonClicked(object sender, EventArgs e);
 
         void FindButtonClicked(object sender, EventArgs e);

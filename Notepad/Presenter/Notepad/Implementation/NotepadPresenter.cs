@@ -24,8 +24,9 @@ namespace Notepad.Presenter.Notepad.Implementation
             this._notepad.TextSelectedEvent += TextSelected;
 
             this._notepad.UndoButtonClickedEvent += UndoButtonClicked;
-            //this._notepad.CopyButtonClickedEvent += CopyButtonClicked;
+            this._notepad.CopyButtonClickedEvent += CopyButtonClicked;
             this._notepad.CutButtonClickedEvent += CutButtonClicked;
+            this._notepad.PasteButtonClickedEvent += PasteButtonClicked;
             this._notepad.DeleteButtonClickedEvent += DeleteButtonClicked;
             this._notepad.FindButtonClickedEvent += FindButtonClicked;
             this._notepad.TimeDateButtonClickedEvent += TimeDateButtonClicked;

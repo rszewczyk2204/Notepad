@@ -9,6 +9,7 @@ namespace Notepad.View.Notepad.Implentation
         public event EventHandler UndoButtonClickedEvent;
         public event EventHandler CutButtonClickedEvent;
         public event EventHandler CopyButtonClickedEvent;
+        public event EventHandler PasteButtonClickedEvent;
         public event EventHandler DeleteButtonClickedEvent;
         public event EventHandler FindButtonClickedEvent;
         public event EventHandler TimeDateButtonClickedEvent;
@@ -22,6 +23,16 @@ namespace Notepad.View.Notepad.Implentation
         public void CutButtonClicked(object sender, EventArgs e)
         {
             CutButtonClickedEvent.Invoke(textBox1, e);
+        }
+
+        public void CopyButtonClicked(object sender, EventArgs e)
+        {
+            CopyButtonClickedEvent.Invoke(textBox1, e);
+        }
+
+        public void PasteButtonClicked(object sender, EventArgs e)
+        {
+            PasteButtonClickedEvent.Invoke(textBox1, e);
         }
 
         public void DeleteButtonClicked(object sender, EventArgs e)

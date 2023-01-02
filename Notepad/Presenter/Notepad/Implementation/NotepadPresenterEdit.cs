@@ -21,6 +21,18 @@ namespace Notepad.Presenter.Notepad.Implementation
             inputTextBox.Cut();
         }
 
+        public void CopyButtonClicked(object sender, EventArgs e)
+        {
+            RichTextBox inputTextBox = sender as RichTextBox;
+            inputTextBox.Copy();
+        }
+
+        public void PasteButtonClicked(object sender, EventArgs e)
+        {
+            RichTextBox inputTextBox = sender as RichTextBox;
+            inputTextBox.Text += Clipboard.GetText();
+        }
+
         public void DeleteButtonClicked(object sender, EventArgs e)
         {
             RichTextBox inputTextBox = sender as RichTextBox;
