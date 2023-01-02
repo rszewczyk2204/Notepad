@@ -4,7 +4,7 @@ using System;
 
 namespace Notepad.View.Notepad.Implentation
 {
-    public partial class Notepad : INotepad, INotepadFile
+    public partial class Notepad : INotepadEvents, INotepadFile
     {
         public event EventHandler NewFormButtonClickedEvent;
         public event EventHandler TextBoxTextChangedEvent;
@@ -15,11 +15,6 @@ namespace Notepad.View.Notepad.Implentation
         public event EventHandler PageSetupButtonClickedEvent;
         public event EventHandler PrintButtonClickedEvent;
         public event EventHandler ExitButtonClickedEvent;
-
-        public void TextBoxTextChanged(object sender, EventArgs e)
-        {
-            TextBoxTextChangedEvent.Invoke(this, e);
-        }
 
         public void NewFormButtonClicked(object sender, EventArgs eventArgs)
         {

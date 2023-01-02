@@ -1,12 +1,10 @@
-﻿using Notepad.View.Interface;
-using System;
+﻿using System;
 
 namespace Notepad.View.Notepad.Interface.Events
 {
-    public partial interface INotepad : INotepadValues
+    public partial interface INotepadEvents
     {
         event EventHandler NewFormButtonClickedEvent;
-        event EventHandler TextBoxTextChangedEvent;
         event EventHandler NewWindowButtonClickedEvent;
         event EventHandler OpenFileButtonClickedEvent;
         event EventHandler SaveButtonClickedEvent;

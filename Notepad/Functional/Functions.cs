@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -29,6 +28,14 @@ namespace Notepad.Functional
         public static bool NonNull(object value)
         {
             return value != null;
+        }
+
+        public static string GetDate(DateTime time)
+        {
+            string partOfDay = time.Hour >= 0 && time.Hour < 12 ? "AM" : "PM";
+            string hour = time.Hour.ToString().StartsWith("0") ? "12" : time.Hour.ToString();
+
+            return hour + ":" + time.Minute.ToString() + " " + partOfDay + " " + time.Month.ToString() + "/" + time.Day.ToString() + "/" + time.Year.ToString();
         }
     }
 
@@ -110,11 +117,40 @@ namespace Notepad.Functional
             {
             }
         }
+
         public static void SetPadding(TextBox textBox, Padding padding)
         {
             var rect = new Rectangle(padding.Left, padding.Top, textBox.ClientSize.Width - padding.Left - padding.Right, textBox.ClientSize.Height - padding.Top - padding.Bottom);
             RECT rc = new RECT(rect);
             SendMessageRefRect(textBox.Handle, EM_SETRECT, 0, ref rc);
+        }
+
+        public class MyRenderer : ToolStripProfessionalRenderer
+        {
+            public MyRenderer() : base(new MyColors()) { }
+        }
+
+        private class MyColors : ProfessionalColorTable
+        {
+            public override Color MenuItemSelected
+            {
+                get { return Color.Gray; }
+            }
+            public override Color MenuItemSelectedGradientBegin
+            {
+                get { return Color.Gray; }
+            }
+            public override Color MenuItemSelectedGradientEnd
+            {
+                get { return Color.Gray; }
+            }
+            public override Color MenuItemBorder
+            {
+                get { return Color.Empty; }
+            }
+            public override Color MenuItemPressedGradientBegin => Color.Gray;
+            public override Color MenuItemPressedGradientEnd => Color.Gray;
+            public override Color MenuItemPressedGradientMiddle => Color.Gray;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Notepad.View.Notepad.Interface.File
     {
         void NewFormButtonClicked(object sender, EventArgs eventArgs);
 
-        void TextBoxTextChanged(object sender, EventArgs eventArgs);
+        
 
         void NewWindowButtonClicked(object sender, EventArgs eventArgs);
 

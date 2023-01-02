@@ -1,8 +1,7 @@
-﻿using Notepad.Presenter.Implementation;
-using Notepad.Presenter.Interface;
-using Notepad.View.Notepad.Interface.Edit;
+﻿using Notepad.Presenter.Notepad.Implementation;
+using Notepad.Presenter.Notepad.Interface;
+using Notepad.View.Notepad.Interface;
 using Notepad.View.Notepad.Interface.Events;
-using Notepad.View.Notepad.Interface.View;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,49 +9,50 @@ using static Notepad.Functional.Utility;
 
 namespace Notepad.View.Notepad.Implentation
 {
-    public partial class Notepad : Form, INotepad, INotepadView, INotepadEdit
+    public partial class Notepad : Form, INotepadEvents, INotepadMethods
     {
-        public string DefaultText { get; set; }
+        private bool _isTitleUpdated;
+        private bool _isNewlyCreated = false;
+        private string _absoluteFilePath;
 
-        public event EventHandler FindButtonClickedEvent;
+        private readonly INotepadPresenter notepadPresenter;
 
-        public event EventHandler TimeDateButtonClickedEvent;
-        public event EventHandler FontButtonClickedEvent;
-
-        public event EventHandler ButtonHoveredOverEvent;
-
-        private readonly IConfigurationPresenter configurationPresenter;
+        public event EventHandler TextSelectedEvent;
 
         public Notepad()
         {
-            configurationPresenter = new ConfigurationPresenter(this);
+            notepadPresenter = new NotepadPresenter(this);
             InitializeComponent();
             Text = "Untitled - Notepad";
             textBox1.Focus();
             textBox2.Text = "Ln 1, Col 1";
             DefaultText = textBox1.Text;
             menuStrip1.Renderer = new MyRenderer();
-        }
-
-        public void FindButtonClicked(object sender, EventArgs eventArgs)
-        {
-            FindButtonClickedEvent.Invoke(this, eventArgs);
-        }
-
-        public void TimeDateButtonClicked(object sender, EventArgs eventArgs)
-        {
-            TimeDateButtonClickedEvent.Invoke(this, eventArgs);
-        }
-
-        public void FontButtonClicked(object sender, EventArgs eventArgs)
-        {
-            FontButtonClickedEvent.Invoke(this, eventArgs);
+            IsUndoButtonEnabled = false;
         }
 
         protected override void OnActivated(EventArgs e)
         {
             UseImmersiveDarkMode(this.Handle, true);
             base.OnActivated(e);
+        }
+
+        public void TextBoxTextChanged(object sender, EventArgs e)
+        {
+            TextBoxTextChangedEvent.Invoke(this, e);
+        }
+
+        public void TextSelected(object sender, EventArgs e)
+        {
+            TextSelectedEvent.Invoke(this, e);
+        }
+
+        public string DefaultText { get; set; }
+
+        public bool IsTitleUpdated
+        {
+            set => _isTitleUpdated = value;
+            get => _isTitleUpdated;
         }
 
         public string InputText
@@ -116,32 +116,41 @@ namespace Notepad.View.Notepad.Implentation
             }
         }
 
-        private class MyRenderer : ToolStripProfessionalRenderer
+        public bool IsNewlyCreated
         {
-            public MyRenderer() : base(new MyColors()) { }
+            get => _isNewlyCreated;
+            set => _isNewlyCreated = value;
         }
 
-        private class MyColors : ProfessionalColorTable
+        public string AbsoluteFilePath
         {
-            public override Color MenuItemSelected
-            {
-                get { return Color.Gray; }
-            }
-            public override Color MenuItemSelectedGradientBegin
-            {
-                get { return Color.Gray; }
-            }
-            public override Color MenuItemSelectedGradientEnd
-            {
-                get { return Color.Gray; }
-            }
-            public override Color MenuItemBorder
-            {
-                get { return Color.Empty; }
-            }
-            public override Color MenuItemPressedGradientBegin => Color.Gray;
-            public override Color MenuItemPressedGradientEnd => Color.Gray;
-            public override Color MenuItemPressedGradientMiddle => Color.Gray;
+            get => _absoluteFilePath;
+            set => _absoluteFilePath = value;
+        }
+
+        public bool IsUndoButtonEnabled
+        {
+            set => undoToolStripMenuItem.Enabled = value;
+        }
+
+        public bool IsCutButtonEnabled
+        {
+            set => cutToolStripMenuItem.Enabled = value;
+        }
+
+        public int SelectionLength
+        {
+            get => textBox1.SelectionLength;
+        }
+
+        public bool IsCopyButtonEnabled
+        {
+            set => copyToolStripMenuItem.Enabled = value;
+        }
+
+        public bool IsDeleteButtonEnabled
+        {
+            set => deleteToolStripMenuItem.Enabled = value;
         }
     }
 }

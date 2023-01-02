@@ -75,6 +75,7 @@
             this.CloseFindButton.TabIndex = 4;
             this.CloseFindButton.Text = "X";
             this.CloseFindButton.UseVisualStyleBackColor = true;
+            this.CloseFindButton.Click += new System.EventHandler(this.CloseButtonClicked);
             // 
             // FindDialogBox
             // 
