@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace Notepad.View.Notepad.Interface.View
+namespace Notepad.Presenter.Notepad.Interface
 {
-    public interface INotepadView
+    public interface INotepadPresenterView
     {
         void StatusBarButtonClicked(object sender, EventArgs e);
+
         void WordWrapButtonClicked(object sender, EventArgs e);
     }
 }

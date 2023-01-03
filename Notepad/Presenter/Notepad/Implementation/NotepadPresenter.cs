@@ -31,6 +31,9 @@ namespace Notepad.Presenter.Notepad.Implementation
             this._notepad.FindButtonClickedEvent += FindButtonClicked;
             this._notepad.TimeDateButtonClickedEvent += TimeDateButtonClicked;
             this._notepad.FontButtonClickedEvent += FontButtonClicked;
+
+            this._notepad.StatusBarButtonClickedEvent += StatusBarButtonClicked;
+            this._notepad.WordWrapButtonClickedEvent += WordWrapButtonClicked;
         }
 
         public void TextBoxTextChanged(object sender, EventArgs eventArgs)
@@ -42,12 +45,16 @@ namespace Notepad.Presenter.Notepad.Implementation
                 notepad.TitleBarText = "*" + notepad.TitleBarText;
                 notepad.IsTitleUpdated = true;
                 notepad.IsUndoButtonEnabled = true;
+                notepad.IsFindButtonEnabled = true;
+                notepad.IsFindNextButtonEnabled = true;
             }
 
             if ((notepad.InputText == notepad.DefaultText) && notepad.TitleBarText.StartsWith("*"))
             {
                 notepad.IsUndoButtonEnabled = false;
                 notepad.IsTitleUpdated = false;
+                notepad.IsFindButtonEnabled = false;
+                notepad.IsFindNextButtonEnabled = false;
                 notepad.TitleBarText = notepad.TitleBarText.Substring(1);
             }
         }

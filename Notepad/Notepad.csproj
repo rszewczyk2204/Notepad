@@ -93,8 +93,10 @@
     <Compile Include="Presenter\Find\Interface\IFindPresenter.cs" />
     <Compile Include="Presenter\Notepad\Implementation\NotepadPresenter.cs" />
     <Compile Include="Presenter\Notepad\Implementation\NotepadPresenterEdit.cs" />
+    <Compile Include="Presenter\Notepad\Implementation\NotepadPresenterView.cs" />
     <Compile Include="Presenter\Notepad\Interface\INotepadPresenter.cs" />
     <Compile Include="Presenter\Notepad\Interface\INotepadPresenterEdit.cs" />
+    <Compile Include="Presenter\Notepad\Interface\INotepadPresenterView.cs" />
     <Compile Include="View\Find\Implementation\FindDialogBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,10 +121,14 @@
     <Compile Include="View\Notepad\Implentation\NotepadEdit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\Notepad\Implentation\NotepadView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\Notepad\Interface\Events\INotepadEditEvents.cs" />
     <Compile Include="View\Notepad\Interface\Events\INotepadEvents.cs" />
     <Compile Include="View\Notepad\Interface\Events\INotepadFileEvents.cs" />
     <Compile Include="View\Notepad\Interface\Edit\INotepadEditMethods.cs" />
+    <Compile Include="View\Notepad\Interface\Events\INotepadViewEvents.cs" />
     <Compile Include="View\Notepad\Interface\File\INotepadFileMethods.cs" />
     <Compile Include="View\Notepad\Interface\INotepadMethods.cs" />
     <Compile Include="View\Notepad\Interface\View\INotepadView.cs" />

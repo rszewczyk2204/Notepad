@@ -42,7 +42,7 @@ namespace Notepad.View.Notepad.Implentation
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.findToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findPreviousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +53,9 @@ namespace Notepad.View.Notepad.Implentation
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomInToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreDefaultZoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wordWrapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lineSeperator = new System.Windows.Forms.ToolStripSeparator();
@@ -192,7 +195,7 @@ namespace Notepad.View.Notepad.Implentation
             this.deleteToolStripMenuItem,
             this.toolStripSeparator2,
             this.findToolStripMenuItem,
-            this.findToolStripMenuItem1,
+            this.findNextToolStripMenuItem,
             this.findPreviousToolStripMenuItem,
             this.replaceToolStripMenuItem,
             this.goToToolStripMenuItem,
@@ -210,110 +213,116 @@ namespace Notepad.View.Notepad.Implentation
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.UndoButtonClicked);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(158, 6);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Enabled = false;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.CutButtonClicked);
             // 
             // copyToolStripMenuItem
             // 
+            this.copyToolStripMenuItem.Enabled = false;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyButtonClicked);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteButtonClicked);
             // 
             // deleteToolStripMenuItem
             // 
+            this.deleteToolStripMenuItem.Enabled = false;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteButtonClicked);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(158, 6);
             // 
             // findToolStripMenuItem
             // 
+            this.findToolStripMenuItem.Enabled = false;
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.findToolStripMenuItem.Text = "Find";
             this.findToolStripMenuItem.Click += new System.EventHandler(this.FindButtonClicked);
             // 
-            // findToolStripMenuItem1
+            // findNextToolStripMenuItem
             // 
-            this.findToolStripMenuItem1.Name = "findToolStripMenuItem1";
-            this.findToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.findToolStripMenuItem1.Text = "Find next";
-            this.findToolStripMenuItem1.Click += new System.EventHandler(this.FindButtonClicked);
+            this.findNextToolStripMenuItem.Enabled = false;
+            this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
+            this.findNextToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.findNextToolStripMenuItem.Text = "Find next";
+            this.findNextToolStripMenuItem.Click += new System.EventHandler(this.FindButtonClicked);
             // 
             // findPreviousToolStripMenuItem
             // 
+            this.findPreviousToolStripMenuItem.Enabled = false;
             this.findPreviousToolStripMenuItem.Name = "findPreviousToolStripMenuItem";
-            this.findPreviousToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findPreviousToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.findPreviousToolStripMenuItem.Text = "Find previous";
             this.findPreviousToolStripMenuItem.Click += new System.EventHandler(this.FindButtonClicked);
             // 
             // replaceToolStripMenuItem
             // 
+            this.replaceToolStripMenuItem.Enabled = false;
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.replaceToolStripMenuItem.Text = "Replace";
             this.replaceToolStripMenuItem.Click += new System.EventHandler(this.FindButtonClicked);
             // 
             // goToToolStripMenuItem
             // 
             this.goToToolStripMenuItem.Name = "goToToolStripMenuItem";
-            this.goToToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.goToToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.goToToolStripMenuItem.Text = "Go to";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.selectAllToolStripMenuItem.Text = "Select all";
             // 
             // timeDateToolStripMenuItem
             // 
             this.timeDateToolStripMenuItem.Name = "timeDateToolStripMenuItem";
-            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.timeDateToolStripMenuItem.Text = "Time/Date";
             this.timeDateToolStripMenuItem.Click += new System.EventHandler(this.TimeDateButtonClicked);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(158, 6);
             // 
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.fontToolStripMenuItem.Text = "Font";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.FontButtonClicked);
             // 
@@ -330,21 +339,47 @@ namespace Notepad.View.Notepad.Implentation
             // 
             // zoomInToolStripMenuItem
             // 
+            this.zoomInToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zoomInToolStripMenuItem1,
+            this.zoomOutToolStripMenuItem,
+            this.restoreDefaultZoomToolStripMenuItem});
             this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zoomInToolStripMenuItem.Text = "Zoom In";
+            // 
+            // zoomInToolStripMenuItem1
+            // 
+            this.zoomInToolStripMenuItem1.Name = "zoomInToolStripMenuItem1";
+            this.zoomInToolStripMenuItem1.Size = new System.Drawing.Size(189, 22);
+            this.zoomInToolStripMenuItem1.Text = "Zoom In";
+            // 
+            // zoomOutToolStripMenuItem
+            // 
+            this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.zoomOutToolStripMenuItem.Text = "Zoom Out";
+            // 
+            // restoreDefaultZoomToolStripMenuItem
+            // 
+            this.restoreDefaultZoomToolStripMenuItem.Name = "restoreDefaultZoomToolStripMenuItem";
+            this.restoreDefaultZoomToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.restoreDefaultZoomToolStripMenuItem.Text = "Restore Default Zoom";
             // 
             // statusBaToolStripMenuItem
             // 
+            this.statusBaToolStripMenuItem.Checked = true;
+            this.statusBaToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBaToolStripMenuItem.Name = "statusBaToolStripMenuItem";
-            this.statusBaToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.statusBaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.statusBaToolStripMenuItem.Text = "Status Bar";
+            this.statusBaToolStripMenuItem.Click += new System.EventHandler(this.StatusBarButtonClicked);
             // 
             // wordWrapToolStripMenuItem
             // 
             this.wordWrapToolStripMenuItem.Name = "wordWrapToolStripMenuItem";
-            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wordWrapToolStripMenuItem.Text = "Word Wrap";
+            this.wordWrapToolStripMenuItem.Click += new System.EventHandler(this.WordWrapButtonClicked);
             // 
             // lineSeperator
             // 
@@ -354,16 +389,16 @@ namespace Notepad.View.Notepad.Implentation
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.40206F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.59794F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.textBox2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 453);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(915, 24);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
@@ -395,6 +430,7 @@ namespace Notepad.View.Notepad.Implentation
             this.textBox1.Size = new System.Drawing.Size(915, 429);
             this.textBox1.TabIndex = 11;
             this.textBox1.Text = "";
+            this.textBox1.WordWrap = false;
             this.textBox1.SelectionChanged += new System.EventHandler(this.TextSelected);
             this.textBox1.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             // 
@@ -442,7 +478,7 @@ namespace Notepad.View.Notepad.Implentation
         private ToolStripMenuItem pasteToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
         private ToolStripMenuItem findToolStripMenuItem;
-        private ToolStripMenuItem findToolStripMenuItem1;
+        private ToolStripMenuItem findNextToolStripMenuItem;
         private ToolStripMenuItem findPreviousToolStripMenuItem;
         private ToolStripMenuItem replaceToolStripMenuItem;
         private ToolStripMenuItem goToToolStripMenuItem;
@@ -460,5 +496,8 @@ namespace Notepad.View.Notepad.Implentation
         private ToolStripMenuItem statusBaToolStripMenuItem;
         private ToolStripMenuItem wordWrapToolStripMenuItem;
         private RichTextBox textBox1;
+        private ToolStripMenuItem zoomInToolStripMenuItem1;
+        private ToolStripMenuItem zoomOutToolStripMenuItem;
+        private ToolStripMenuItem restoreDefaultZoomToolStripMenuItem;
     }
 }

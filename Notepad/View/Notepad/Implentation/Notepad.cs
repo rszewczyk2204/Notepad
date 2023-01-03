@@ -158,5 +158,15 @@ namespace Notepad.View.Notepad.Implentation
         {
             set => pasteToolStripMenuItem.Enabled = value;
         }
+
+        public bool IsFindButtonEnabled
+        {
+            set => findToolStripMenuItem.Enabled = value;
+        }
+
+        public bool IsFindNextButtonEnabled
+        {
+            set => findNextToolStripMenuItem.Enabled = value;
+        }
     }
 }
