@@ -32,6 +32,9 @@ namespace Notepad.Presenter.Notepad.Implementation
             this._notepad.TimeDateButtonClickedEvent += TimeDateButtonClicked;
             this._notepad.FontButtonClickedEvent += FontButtonClicked;
 
+            this._notepad.ZoomInButtonClickedEvent += ZoomInButtonClicked;
+            this._notepad.ZoomOutButtonClickedEvent += ZoomOutButtonClicked;
+            this._notepad.RestoreDefaultZoomButtonClickedEvent += RestoreDefaultZoomButtonClicked;
             this._notepad.StatusBarButtonClickedEvent += StatusBarButtonClicked;
             this._notepad.WordWrapButtonClickedEvent += WordWrapButtonClicked;
         }
@@ -47,6 +50,7 @@ namespace Notepad.Presenter.Notepad.Implementation
                 notepad.IsUndoButtonEnabled = true;
                 notepad.IsFindButtonEnabled = true;
                 notepad.IsFindNextButtonEnabled = true;
+                notepad.IsFindPreviousButtonEnabled = true;
             }
 
             if ((notepad.InputText == notepad.DefaultText) && notepad.TitleBarText.StartsWith("*"))
@@ -55,6 +59,7 @@ namespace Notepad.Presenter.Notepad.Implementation
                 notepad.IsTitleUpdated = false;
                 notepad.IsFindButtonEnabled = false;
                 notepad.IsFindNextButtonEnabled = false;
+                notepad.IsFindPreviousButtonEnabled = false;
                 notepad.TitleBarText = notepad.TitleBarText.Substring(1);
             }
         }

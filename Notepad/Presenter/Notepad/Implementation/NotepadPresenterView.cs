@@ -1,11 +1,30 @@
 ﻿using Notepad.Presenter.Notepad.Interface;
 using System;
 using System.Windows.Forms;
+using static Notepad.Functional.Utility;
 
 namespace Notepad.Presenter.Notepad.Implementation
 {
     public partial class NotepadPresenter : INotepadPresenterView
     {
+        public void ZoomInButtonClicked(object sender, EventArgs e)
+        {
+            RichTextBox richTextBox = sender as RichTextBox;
+            richTextBox.Font = new System.Drawing.Font(richTextBox.Font.FontFamily.Name, richTextBox.Font.Size + 1);
+        }
+
+        public void ZoomOutButtonClicked(object sender, EventArgs e)
+        {
+            RichTextBox richTextBox = sender as RichTextBox;
+            richTextBox.Font = new System.Drawing.Font(richTextBox.Font.FontFamily.Name, richTextBox.Font.Size - 1);
+        }
+
+        public void RestoreDefaultZoomButtonClicked(object sender, EventArgs e)
+        {
+            RichTextBox richTextBox = sender as RichTextBox;
+            richTextBox.Font = new System.Drawing.Font(richTextBox.Font.FontFamily.Name, DefaultFontSize);
+        }
+
         public void StatusBarButtonClicked(object sender, EventArgs e)
         {
             TableLayoutPanel tableLayoutPanel1 = sender as TableLayoutPanel;

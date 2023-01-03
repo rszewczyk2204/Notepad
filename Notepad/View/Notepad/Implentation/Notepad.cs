@@ -105,18 +105,6 @@ namespace Notepad.View.Notepad.Implentation
             }
         }
 
-        public new Font Font
-        {
-            get
-            {
-                return textBox1.Font;
-            }
-            set
-            {
-                textBox1.Font = value;
-            }
-        }
-
         public bool IsNewlyCreated
         {
             get => _isNewlyCreated;
@@ -167,6 +155,16 @@ namespace Notepad.View.Notepad.Implentation
         public bool IsFindNextButtonEnabled
         {
             set => findNextToolStripMenuItem.Enabled = value;
+        }
+
+        public bool IsFindPreviousButtonEnabled
+        {
+            set => findPreviousToolStripMenuItem.Enabled = value;
+        }
+
+        public bool IsReplaceButtonEnabled
+        {
+            set => replaceToolStripMenuItem.Enabled = value;
         }
     }
 }

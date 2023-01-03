@@ -6,8 +6,26 @@ namespace Notepad.View.Notepad.Implentation
 {
     public partial class Notepad : INotepadView, INotepadEvents
     {
+        public event EventHandler ZoomInButtonClickedEvent;
+        public event EventHandler ZoomOutButtonClickedEvent;
+        public event EventHandler RestoreDefaultZoomButtonClickedEvent;
         public event EventHandler StatusBarButtonClickedEvent;
         public event EventHandler WordWrapButtonClickedEvent;
+
+        public void ZoomInButtonClicked(object sender, EventArgs e)
+        {
+            ZoomInButtonClickedEvent.Invoke(this.textBox1, e);
+        }
+
+        public void ZoomOutButtonClicked(object sender, EventArgs e)
+        {
+            ZoomOutButtonClickedEvent.Invoke(this.textBox1, e);
+        }
+
+        public void RestoreDefaultZoomButtonClicked(object sender, EventArgs e)
+        {
+            RestoreDefaultZoomButtonClickedEvent.Invoke(this.textBox1, e);
+        }
 
         public void StatusBarButtonClicked(object sender, EventArgs e)
         {

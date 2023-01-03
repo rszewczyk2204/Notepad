@@ -53,6 +53,7 @@ namespace Notepad.Functional
 
         private const int DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1 = 19;
         private const int DWMWA_USE_IMMERSIVE_DARK_MODE = 20;
+        private static float FontSize = 8.25f;
 
         public static bool UseImmersiveDarkMode(IntPtr handle, bool enabled)
         {
@@ -151,6 +152,12 @@ namespace Notepad.Functional
             public override Color MenuItemPressedGradientBegin => Color.Gray;
             public override Color MenuItemPressedGradientEnd => Color.Gray;
             public override Color MenuItemPressedGradientMiddle => Color.Gray;
+        }
+
+        public static float DefaultFontSize
+        {
+            get => FontSize;
+            set => FontSize = value;
         }
     }
 }

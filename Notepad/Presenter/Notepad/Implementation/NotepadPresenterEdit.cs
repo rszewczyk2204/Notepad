@@ -4,6 +4,7 @@ using System;
 using Notepad.Model.DialogBox;
 
 using static Notepad.Functional.Functions;
+using static Notepad.Functional.Utility;
 
 namespace Notepad.Presenter.Notepad.Implementation
 {
@@ -60,7 +61,7 @@ namespace Notepad.Presenter.Notepad.Implementation
 
         public void FontButtonClicked(object sender, EventArgs eventArgs)
         {
-            View.Notepad.Implentation.Notepad notepad = sender as View.Notepad.Implentation.Notepad;
+            RichTextBox richTextBox = sender as RichTextBox;
 
             FontDialog fontDialog = new FontDialog();
 
@@ -68,7 +69,8 @@ namespace Notepad.Presenter.Notepad.Implementation
 
             if (result == DialogResult.OK)
             {
-                notepad.Font = fontDialog.Font;
+                richTextBox.Font = fontDialog.Font;
+                DefaultFontSize = (int)richTextBox.Font.Size;
             }
         }
     }

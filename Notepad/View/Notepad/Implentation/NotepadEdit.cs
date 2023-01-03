@@ -52,7 +52,7 @@ namespace Notepad.View.Notepad.Implentation
 
         public void FontButtonClicked(object sender, EventArgs eventArgs)
         {
-            FontButtonClickedEvent.Invoke(this, eventArgs);
+            FontButtonClickedEvent.Invoke(this.textBox1, eventArgs);
         }
     }
 }

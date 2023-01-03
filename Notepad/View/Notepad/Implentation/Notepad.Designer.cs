@@ -344,7 +344,7 @@ namespace Notepad.View.Notepad.Implentation
             this.zoomOutToolStripMenuItem,
             this.restoreDefaultZoomToolStripMenuItem});
             this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.zoomInToolStripMenuItem.Text = "Zoom In";
             // 
             // zoomInToolStripMenuItem1
@@ -352,32 +352,35 @@ namespace Notepad.View.Notepad.Implentation
             this.zoomInToolStripMenuItem1.Name = "zoomInToolStripMenuItem1";
             this.zoomInToolStripMenuItem1.Size = new System.Drawing.Size(189, 22);
             this.zoomInToolStripMenuItem1.Text = "Zoom In";
+            this.zoomInToolStripMenuItem1.Click += new System.EventHandler(this.ZoomInButtonClicked);
             // 
             // zoomOutToolStripMenuItem
             // 
             this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
             this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.zoomOutToolStripMenuItem.Text = "Zoom Out";
+            this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.ZoomOutButtonClicked);
             // 
             // restoreDefaultZoomToolStripMenuItem
             // 
             this.restoreDefaultZoomToolStripMenuItem.Name = "restoreDefaultZoomToolStripMenuItem";
             this.restoreDefaultZoomToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.restoreDefaultZoomToolStripMenuItem.Text = "Restore Default Zoom";
+            this.restoreDefaultZoomToolStripMenuItem.Click += new System.EventHandler(this.RestoreDefaultZoomButtonClicked);
             // 
             // statusBaToolStripMenuItem
             // 
             this.statusBaToolStripMenuItem.Checked = true;
             this.statusBaToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBaToolStripMenuItem.Name = "statusBaToolStripMenuItem";
-            this.statusBaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statusBaToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.statusBaToolStripMenuItem.Text = "Status Bar";
             this.statusBaToolStripMenuItem.Click += new System.EventHandler(this.StatusBarButtonClicked);
             // 
             // wordWrapToolStripMenuItem
             // 
             this.wordWrapToolStripMenuItem.Name = "wordWrapToolStripMenuItem";
-            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.wordWrapToolStripMenuItem.Text = "Word Wrap";
             this.wordWrapToolStripMenuItem.Click += new System.EventHandler(this.WordWrapButtonClicked);
             // 
