@@ -1,6 +1,7 @@
 ﻿using Notepad.Presenter.Notepad.Interface;
 using Notepad.View.Notepad.Interface.Events;
 using System;
+using System.Windows.Forms;
 
 namespace Notepad.Presenter.Notepad.Implementation
 {
@@ -22,6 +23,7 @@ namespace Notepad.Presenter.Notepad.Implementation
 
             this._notepad.TextBoxTextChangedEvent += TextBoxTextChanged;
             this._notepad.TextSelectedEvent += TextSelected;
+            this._notepad.TextBoxClickedEvent += TextBoxClicked;
 
             this._notepad.UndoButtonClickedEvent += UndoButtonClicked;
             this._notepad.CopyButtonClickedEvent += CopyButtonClicked;
@@ -39,7 +41,7 @@ namespace Notepad.Presenter.Notepad.Implementation
             this._notepad.WordWrapButtonClickedEvent += WordWrapButtonClicked;
         }
 
-        public void TextBoxTextChanged(object sender, EventArgs eventArgs)
+        public void TextBoxTextChanged(object sender, EventArgs e)
         {
             View.Notepad.Implentation.Notepad notepad = sender as View.Notepad.Implentation.Notepad;
 
@@ -62,6 +64,14 @@ namespace Notepad.Presenter.Notepad.Implementation
                 notepad.IsFindPreviousButtonEnabled = false;
                 notepad.TitleBarText = notepad.TitleBarText.Substring(1);
             }
+
+            var subText = notepad.InputText.Substring(0, notepad.TextBoxSelectionStart);
+            var arr = subText.Split('\n');
+            int ln = arr.Length;
+
+            int pos = arr[arr.Length - 1].Length + 1;
+
+            notepad.CursorPositionText = "Ln " + ln + ", Col " + pos;
         }
 
         public void TextSelected(object sender, EventArgs eventArgs)
@@ -80,6 +90,19 @@ namespace Notepad.Presenter.Notepad.Implementation
                 notepad.IsCutButtonEnabled = false;
                 notepad.IsDeleteButtonEnabled = false;
             }
+        }
+
+        public void TextBoxClicked(object sender, EventArgs eventArgs)
+        {
+            View.Notepad.Implentation.Notepad notepad = sender as View.Notepad.Implentation.Notepad;
+
+            var subText = notepad.InputText.Substring(0, notepad.TextBoxSelectionStart);
+            var arr = subText.Split('\n');
+            int ln = arr.Length;
+
+            int pos = arr[arr.Length - 1].Length + 1;
+
+            notepad.CursorPositionText = "Ln " + ln + ", Col " + pos;
         }
     }
 }

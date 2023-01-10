@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.ComponentModel;
+using System.Windows.Forms.VisualStyles;
 
 namespace Notepad.View.Notepad.Implentation
 {
@@ -364,7 +365,7 @@ namespace Notepad.View.Notepad.Implentation
             this.zoomOutToolStripMenuItem,
             this.restoreDefaultZoomToolStripMenuItem});
             this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.zoomInToolStripMenuItem.Text = "Zoom In";
             // 
             // zoomInToolStripMenuItem1
@@ -398,14 +399,14 @@ namespace Notepad.View.Notepad.Implentation
             this.statusBaToolStripMenuItem.Checked = true;
             this.statusBaToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBaToolStripMenuItem.Name = "statusBaToolStripMenuItem";
-            this.statusBaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statusBaToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.statusBaToolStripMenuItem.Text = "Status Bar";
             this.statusBaToolStripMenuItem.Click += new System.EventHandler(this.StatusBarButtonClicked);
             // 
             // wordWrapToolStripMenuItem
             // 
             this.wordWrapToolStripMenuItem.Name = "wordWrapToolStripMenuItem";
-            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.wordWrapToolStripMenuItem.Text = "Word Wrap";
             this.wordWrapToolStripMenuItem.Click += new System.EventHandler(this.WordWrapButtonClicked);
             // 
@@ -453,13 +454,14 @@ namespace Notepad.View.Notepad.Implentation
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox1.Location = new System.Drawing.Point(0, 24);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(36, 0, 0, 0);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(915, 429);
             this.textBox1.TabIndex = 11;
             this.textBox1.Text = "";
             this.textBox1.WordWrap = false;
             this.textBox1.SelectionChanged += new System.EventHandler(this.TextSelected);
+            this.textBox1.Click += new System.EventHandler(this.TextBoxClicked);
             this.textBox1.TextChanged += new System.EventHandler(this.TextBoxTextChanged);
             // 
             // Notepad

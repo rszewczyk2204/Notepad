@@ -1,13 +1,13 @@
 ﻿using Notepad.View.Notepad.Interface.Events;
 using Notepad.View.Notepad.Interface.File;
 using System;
+using System.Windows.Forms;
 
 namespace Notepad.View.Notepad.Implentation
 {
     public partial class Notepad : INotepadEvents, INotepadFile
     {
         public event EventHandler NewFormButtonClickedEvent;
-        public event EventHandler TextBoxTextChangedEvent;
         public event EventHandler NewWindowButtonClickedEvent;
         public event EventHandler OpenFileButtonClickedEvent;
         public event EventHandler SaveButtonClickedEvent;

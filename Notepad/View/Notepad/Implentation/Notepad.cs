@@ -3,7 +3,7 @@ using Notepad.Presenter.Notepad.Interface;
 using Notepad.View.Notepad.Interface;
 using Notepad.View.Notepad.Interface.Events;
 using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using static Notepad.Functional.Utility;
 
@@ -18,6 +18,10 @@ namespace Notepad.View.Notepad.Implentation
         private readonly INotepadPresenter notepadPresenter;
 
         public event EventHandler TextSelectedEvent;
+        public event EventHandler TextBoxTextChangedEvent;
+        public event EventHandler TextBoxClickedEvent;
+
+        private Dictionary<int, int> lnCol;
 
         public Notepad()
         {
@@ -30,6 +34,7 @@ namespace Notepad.View.Notepad.Implentation
             menuStrip1.Renderer = new MyRenderer();
             IsUndoButtonEnabled = false;
             IsPasteButtonEnabled = Clipboard.ContainsText();
+            lnCol = new Dictionary<int, int>();
         }
 
         protected override void OnActivated(EventArgs e)
@@ -48,6 +53,11 @@ namespace Notepad.View.Notepad.Implentation
             TextSelectedEvent.Invoke(this, e);
         }
 
+        public void TextBoxClicked(object sender, EventArgs e)
+        {
+            TextBoxClickedEvent.Invoke(this, e);
+        }
+
         public string DefaultText { get; set; }
 
         public bool IsTitleUpdated
@@ -58,51 +68,26 @@ namespace Notepad.View.Notepad.Implentation
 
         public string InputText
         {
-            get
-            {
-                return textBox1.Text;
-            }
-
-            set
-            {
-                textBox1.Text = value;
-            }
+            get => textBox1.Text;
+            set => textBox1.Text = value;
         }
 
         public string TitleBarText
         {
-            get
-            {
-                return Text;
-            }
-            set
-            {
-                Text = value;
-            }
+            get => Text;
+            set => Text = value;
         }
 
         public int TextBoxSelectionStart
         {
-            get
-            {
-                return textBox1.SelectionStart;
-            }
-            set
-            {
-                textBox1.SelectionStart = value;
-            }
+            get => textBox1.SelectionStart; 
+            set => textBox1.SelectionStart = value;
         }
 
         public int TextBoxSelectionLength 
         {
-            get
-            {
-                return textBox1.SelectionLength;
-            }
-            set
-            {
-                textBox1.SelectionStart = value;
-            }
+            get => textBox1.SelectionLength; 
+            set => textBox1.SelectionStart = value;
         }
 
         public bool IsNewlyCreated
@@ -165,6 +150,12 @@ namespace Notepad.View.Notepad.Implentation
         public bool IsReplaceButtonEnabled
         {
             set => replaceToolStripMenuItem.Enabled = value;
+        }
+
+        public string CursorPositionText
+        {
+            get => textBox2.Text;
+            set => textBox2.Text = value;
         }
     }
 }

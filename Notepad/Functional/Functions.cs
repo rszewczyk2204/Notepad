@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Notepad.View.Notepad.Implentation;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -15,9 +16,9 @@ namespace Notepad.Functional
             return path.Substring(path.LastIndexOf('\\')).Substring(1);
         }
 
-        public static KeyValuePair<int, int> GetCaretPosition(TextBox textBox)
+        public static string GetCursorPosition(string text, int positionStart, bool isBackClicked = false)
         {
-            return new KeyValuePair<int, int>(0, 0);
+            return string.Empty;
         }
 
         public static bool IsNull(object value)
@@ -158,6 +159,14 @@ namespace Notepad.Functional
         {
             get => FontSize;
             set => FontSize = value;
+        }
+
+        public static void RoundCorners(IntPtr Handle)
+        {
+            IntPtr hWnd = Handle;
+            var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
+            var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
+            DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint));
         }
     }
 }

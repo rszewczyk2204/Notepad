@@ -20,8 +20,47 @@ namespace Notepad.Model.DialogBox
             this.presenter = new FindPresenter(this);
 
             InitializeComponent();
-            RoundCorners();
+            RoundCorners(this.Handle);
             FindTextBox.Text = "Find";
+        }
+
+        event EventHandler IFindEvents.ReplaceButtonClickedEvent
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        event EventHandler IFindEvents.ReplaceAllButtonClickedEvent
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        event EventHandler IFindEvents.CloseButtonClickedEvent
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public void CloseButtonClicked(object sender, EventArgs e)
@@ -29,12 +68,19 @@ namespace Notepad.Model.DialogBox
             CloseButtonClickedEvent.Invoke(this, e);
         }
 
-        private void RoundCorners()
+        void IFindMethods.FindButtonClicked(object sender, EventArgs e)
         {
-            IntPtr hWnd = this.Handle;
-            var attribute = DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
-            var preference = DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_ROUND;
-            DwmSetWindowAttribute(hWnd, attribute, ref preference, sizeof(uint));
+            throw new NotImplementedException();
+        }
+
+        void IFindMethods.FindPreviousButtonClicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IFindMethods.CloseButtonClicked(object sender, EventArgs eventArgs)
+        {
+            throw new NotImplementedException();
         }
     }
 }

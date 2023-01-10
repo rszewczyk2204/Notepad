@@ -6,5 +6,6 @@ namespace Notepad.View.Notepad.Interface.Events
     {
         event EventHandler TextBoxTextChangedEvent;
         event EventHandler TextSelectedEvent;
+        event EventHandler TextBoxClickedEvent;
     }
 }
