@@ -1,7 +1,6 @@
 ﻿using Notepad.Presenter.Notepad.Interface;
 using Notepad.View.Notepad.Interface.Events;
 using System;
-using System.Windows.Forms;
 
 namespace Notepad.Presenter.Notepad.Implementation
 {
@@ -12,6 +11,7 @@ namespace Notepad.Presenter.Notepad.Implementation
         public NotepadPresenter(INotepadEvents notepad)
         {
             this._notepad = notepad;
+            #region FileRegion
             this._notepad.NewFormButtonClickedEvent += NewFormButtonClicked;
             this._notepad.NewWindowButtonClickedEvent += NewWindowButtonClicked;
             this._notepad.OpenFileButtonClickedEvent += OpenFileButtonClicked;
@@ -20,11 +20,15 @@ namespace Notepad.Presenter.Notepad.Implementation
             this._notepad.PageSetupButtonClickedEvent += PageSetupButtonClicked;
             this._notepad.PrintButtonClickedEvent += PrintButtonClicked;
             this._notepad.ExitButtonClickedEvent += ExitButtonClicked;
+            #endregion
 
+            #region GeneralRegion
             this._notepad.TextBoxTextChangedEvent += TextBoxTextChanged;
             this._notepad.TextSelectedEvent += TextSelected;
             this._notepad.TextBoxClickedEvent += TextBoxClicked;
+            #endregion
 
+            #region EditRegion
             this._notepad.UndoButtonClickedEvent += UndoButtonClicked;
             this._notepad.CopyButtonClickedEvent += CopyButtonClicked;
             this._notepad.CutButtonClickedEvent += CutButtonClicked;
@@ -33,12 +37,15 @@ namespace Notepad.Presenter.Notepad.Implementation
             this._notepad.FindButtonClickedEvent += FindButtonClicked;
             this._notepad.TimeDateButtonClickedEvent += TimeDateButtonClicked;
             this._notepad.FontButtonClickedEvent += FontButtonClicked;
+            #endregion
 
+            #region ViewRegion
             this._notepad.ZoomInButtonClickedEvent += ZoomInButtonClicked;
             this._notepad.ZoomOutButtonClickedEvent += ZoomOutButtonClicked;
             this._notepad.RestoreDefaultZoomButtonClickedEvent += RestoreDefaultZoomButtonClicked;
             this._notepad.StatusBarButtonClickedEvent += StatusBarButtonClicked;
             this._notepad.WordWrapButtonClickedEvent += WordWrapButtonClicked;
+            #endregion
         }
 
         public void TextBoxTextChanged(object sender, EventArgs e)
