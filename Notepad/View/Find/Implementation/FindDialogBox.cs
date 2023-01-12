@@ -10,6 +10,8 @@ namespace Notepad.Model.DialogBox
     public partial class FindDialogBox : Form, IFindEvents, IFindMethods
     {
         public event EventHandler CloseButtonClickedEvent;
+        public event EventHandler ReplaceButtonClickedEvent;
+        public event EventHandler ReplaceAllButtonClickedEvent;
 
         private readonly INotepadEvents notepad;
         private readonly IFindPresenter presenter;
@@ -22,45 +24,6 @@ namespace Notepad.Model.DialogBox
             InitializeComponent();
             RoundCorners(this.Handle);
             FindTextBox.Text = "Find";
-        }
-
-        event EventHandler IFindEvents.ReplaceButtonClickedEvent
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event EventHandler IFindEvents.ReplaceAllButtonClickedEvent
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event EventHandler IFindEvents.CloseButtonClickedEvent
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
         }
 
         public void CloseButtonClicked(object sender, EventArgs e)
